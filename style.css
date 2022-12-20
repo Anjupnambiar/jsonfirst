@@ -1,0 +1,24 @@
+button{
+    background-color: blue;
+    color: aliceblue;
+    border: none;
+    padding: 10px 40px 10px;
+    font-size: 30px;
+}
+
+button:hover{
+    background: blueviolet;
+}
+
+button:focus{
+    background: red;
+}
+
+#container{
+    width: 70%;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgb(111, 125, 205);
+    padding: 30px;
+    min-height: 400px;
+}

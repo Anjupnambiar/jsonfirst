@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="gethome()">
+    <h1 align="center">
+        JavaScript API fetch() for Static Page Example</h1>
+
+        <div align="center">
+            <button onclick="gethome()">Home</button>
+            <button onclick="getabout()">About</button>    
+            <button onclick="getfile('service.html')">Our Services</button>
+            <button onclick="getfile('gallery.html')">Gallery</button>
+            <button onclick="getfile('login.html')">Login</button>
+            <button onclick="getitem()">Item List</button>
+        </div>
+        <br/>
+
+        <div id="container">
+            
+        </div>
+
+    <script>
+        var gethome =()=>{
+            fetch("home.html")
+            .then(xyz=>xyz.text())
+            .then(originalData =>{
+               document.getElementById("container").innerHTML=originalData;
+            })
+        }
+
+
+        var getabout=()=>{
+            fetch("about.html")
+            .then(xyz=>xyz.text())
+            .then(originalData=>
+            {
+                document.getElementById("container").innerHTML=originalData;
+            })
+        }
+
+        var getfile=(filename)=>{
+            fetch(filename)
+            .then(xyz=>xyz.text())
+            .then(originalData=>{
+                document.getElementById("container").innerHTML=originalData;
+            })
+        }
+
+
+        var getitem=()=>{
+            var data="<h1>Item List from JSON File</h1>";
+            fetch("item.json")
+            .then(xyz=>xyz.json())
+            .then(itemArray=>{
+                itemArray.map((itemName, index)=>{
+                    data=data+"<p>"+itemName+"<p>";
+                })
+                document.getElementById("container").innerHTML=data;
+            })
+        }
+    </script>
+</body>
+</html>
